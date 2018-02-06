@@ -24,26 +24,17 @@
 package main.be.ua.mbarbier.slicemap;
 
 import ij.IJ;
-import ij.plugin.PlugIn;
+//import main.be.ua.mbarbier.slicemap.BatchProcess;
 import java.io.File;
 
 /**
  *
  * @author mbarbier
  */
-public class Batch_Process implements PlugIn {
+public class Batch_Process {
 
 	public Batch_Process() {
 		super();
-	}
-	
-	@Override
-	public void run(String string) {
-		BatchProcess bp = new BatchProcess();
-
-		File csvFile = new File( string );
-
-		bp.run( csvFile );
 	}
 	
 	/**
@@ -51,24 +42,18 @@ public class Batch_Process implements PlugIn {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
-
-		Class<?> clazz = Batch_Process.class;
-        System.out.println(clazz.getName());
-        String url = clazz.getResource("/" + clazz.getName().replace('.', '/') + ".class").toString();
-        String pluginsDir = url.substring(5, url.length() - clazz.getName().length() - 6);
-        System.out.println(pluginsDir);
-        System.setProperty("plugins.dir", pluginsDir);
-
-		//ImageJ imagej = new ImageJ();
+	public static void main( String[] args ) {
 
 		IJ.log("START RUN Batch_Process");
-		String csvPath = "";
+		String csvPath = "G:/slicemap_headless/batch_processing_parameters.csv";
 		if (args.length > 0) {
 			csvPath = args[0];
 		}
+		
 		IJ.log("Parameter csv-file in: " + csvPath);
-		IJ.runPlugIn(clazz.getName(), csvPath);
+		BatchProcess bp = new BatchProcess();
+		File csvFile = new File( csvPath );
+		bp.run( csvFile );
 		IJ.log("END RUN Batch_Process");
 	}
 }

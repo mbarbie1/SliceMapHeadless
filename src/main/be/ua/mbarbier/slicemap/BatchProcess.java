@@ -40,15 +40,15 @@ class BatchProcess {
 	public void run( File paramCsvFile ) {
 		
 		ArrayList< LinkedHashMap< String, String > > csvMapList = LibIO.readCsv( paramCsvFile.getAbsolutePath() , "", ",");
-		
+
 		for ( int i = 0; i < csvMapList.size(); i++ ) {
 			LinkedHashMap< String, String > paramMap = csvMapList.get(i);
 
 			run( paramMap );
 		}
-		
+
 	}
-	
+
 	public void run( LinkedHashMap< String, String > paramMap ) {
 		new Gui( paramMap );
 	}
