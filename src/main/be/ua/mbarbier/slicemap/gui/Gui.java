@@ -621,7 +621,7 @@ public class Gui {
         ImageJ imagej = new ImageJ();
 
 		IJ.log("START RUN gui");
-		String csvPath = "";
+		String csvPath = "G:/slicemap_headless/batch_processing_parameters.csv";
 		if (args.length > 0) {
 			csvPath = args[0];
 		}
